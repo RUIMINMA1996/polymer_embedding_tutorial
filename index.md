@@ -77,9 +77,10 @@ for train_index, test_index in tqdm(loo.split(X)):
 steps:
            -built inputs (X, y) for machine learing
            -create some lists for recording outputs
-           -initialize the model and data-splitting method
+           -initialize the machine learning model and data-splitting method
            -train the model via leave-one-out cross-validation
 
-### Choose a machine learning model and train it in leave-one-out cross-validation
+### Summary
+Quantitative strucure-property relationships is the key of material informatics. Hope this simple tutorial will help more and more polymer researchers in finding and designing polymers. If you are interested and want to know more details, please let me know. I will try to get back to you.
 
 
