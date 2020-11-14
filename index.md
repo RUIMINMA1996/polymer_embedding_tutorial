@@ -10,19 +10,14 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import PandasTools
 
-import scipy
-
 import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
-import seaborn as sns
-from mol2vec.features import mol2alt_sentence, MolSentence, DfVec, sentences2vec
-from mol2vec.helpers import depict_identifier, plot_2D_vectors, IdentifierTable, mol_to_svg     
+
+from mol2vec.features import mol2alt_sentence, MolSentence, DfVec, sentences2vec 
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import LeaveOneOut, KFold
 
 from gensim.models import word2vec
-from sklearn.manifold import TSNE 
-
-from tqdm import tqdm 
 
 from rdkit import rdBase
 rdBase.DisableLog('rdApp.error')
@@ -42,3 +37,18 @@ for i in range(len(smiles)):
     sentences.append(sentence)
 polymer_embeddings = [DfVec(x) for x in sentences2vec(sentence, polymer_embedding_model, unseen='UNK')]
 ```
+
+### Choose a machine learning model and train it in leave-one-out cross-validation
+```markdown
+polymer_embedding_model = word2vec.Word2Vec.load('../data/POLYINFO_PI1M.pkl')
+
+sentences = list()
+smiles = ['*CCCCCCCCCCCCCOC(=O)CCC(=O)N*', 
+           *CCCCCCCCCOC(=O)CCCCCCCC(*)OC(=O)c1ccccc1,
+           *CC(C)CCC(*)OC1C(=O)OCC1(C)C]
+for i in range(len(smiles)):
+    sentence = MolSentence(mol2alt_sentence(Chem.MolFromSmiles(smiles[i], 1))
+    sentences.append(sentence)
+polymer_embeddings = [DfVec(x) for x in sentences2vec(sentence, polymer_embedding_model, unseen='UNK')]
+```
+
