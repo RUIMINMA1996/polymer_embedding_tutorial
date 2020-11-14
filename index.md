@@ -4,9 +4,28 @@ Numerically representing the physical objects is the first and foremost step for
 
 The method for obtaining polymer embedding is similar to the one used for obtaining word embedding. 
 
-
+### Import Required Packages
 ```markdown
-Syntax highlighted code block
+from rdkit import Chem
+from rdkit.Chem import AllChem
+from rdkit.Chem import PandasTools
+
+import scipy
+
+import numpy as np 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+import seaborn as sns
+from mol2vec.features import mol2alt_sentence, MolSentence, DfVec, sentences2vec
+from mol2vec.helpers import depict_identifier, plot_2D_vectors, IdentifierTable, mol_to_svg     
+
+from gensim.models import word2vec
+from sklearn.manifold import TSNE 
+
+from tqdm import tqdm 
+
+from rdkit import rdBase
+rdBase.DisableLog('rdApp.error')
 
 # Header 1
 ## Header 2
