@@ -17,9 +17,11 @@ import numpy as np
 from mol2vec.features import mol2alt_sentence, MolSentence, DfVec, sentences2vec 
 
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import LeaveOneOut, KFold
+from sklearn.model_selection import LeaveOneOut
 
 from gensim.models import word2vec
+
+from tqdm import tqdm
 
 from rdkit import rdBase
 rdBase.DisableLog('rdApp.error')
@@ -42,15 +44,25 @@ polymer_embeddings = [DfVec(x) for x in sentences2vec(sentence, polymer_embeddin
 
 ### Choose a machine learning model and train it in leave-one-out cross-validation
 ```markdown
-polymer_embedding_model = word2vec.Word2Vec.load('../data/POLYINFO_PI1M.pkl')
+X = np.array([x.vec.tolist() for x in polymer_embeddings])
+y = np.array([a, b, c]) # a, b, c can be the corresponding property values
 
-sentences = list()
-smiles = ['*CCCCCCCCCCCCCOC(=O)CCC(=O)N*', 
-           *CCCCCCCCCOC(=O)CCCCCCCC(*)OC(=O)c1ccccc1,
-           *CC(C)CCC(*)OC1C(=O)OCC1(C)C]
-for i in range(len(smiles)):
-    sentence = MolSentence(mol2alt_sentence(Chem.MolFromSmiles(smiles[i], 1))
-    sentences.append(sentence)
-polymer_embeddings = [DfVec(x) for x in sentences2vec(sentence, polymer_embedding_model, unseen='UNK')]
+MAEs = []
+predictions = list()
+ground_truths = list()
+rng = RandomForestRegressor(n_estimators=100, random_state=0, oob_score=False, n_jobs=-1)
+loo = LeaveOneOut()
+
+for train_index, test_index in tqdm(loo.split(X)):
+    rng.fit(X[train_index], y[train_index])
+    prediction = rng.predict(X[test_index])
+    ground_truth = y[test_index]
+
+    predictions.append(prediction[0])
+    ground_truths.append(ground_truth[0])
+    
+    MAE = abs(prediction[0] - ground_truth[0])
+    MAEs.append(MAE)
 ```
+
 
