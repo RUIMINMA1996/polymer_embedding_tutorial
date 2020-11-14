@@ -2,9 +2,11 @@
 
 ### RUIMIN MA
 
-Numerically representing the physical objects is the first and foremost step for machine learing study in them. Materials are among those physical objects and the field that uses machine learning to dig out the relationship between material structures and properties is called material informatics. Today, I am going to write a simple tutorial on how to use polymer embedding for quantifying structure-property relationships in polymers. 
+Numerically representing the physical objects is the first and foremost step for machine learing study in them. Materials are among those physical objects and the field that uses machine learning to dig out the relationship between material structures and properties is called material informatics. Today, I am going to write a simple tutorial on how to use polymer embedding to fast quantify structure-property relationships in polymers. 
 
-The method for obtaining polymer embedding is similar to the one used for obtaining word embedding. 
+The method used for obtaining polymer embedding is called [Skip-gram](https://towardsdatascience.com/skip-gram-nlp-context-words-prediction-algorithm-5bbf34f84e0c). Specifically, a polymer is decomposed into a sequence of substructures following the [Morgan algorithm](https://pubs.acs.org/doi/abs/10.1021/ci100050t), and then a target substructure in this sequence of substructures is picked up to predict its context substructures via a single-layer neural network. Theoretically, each substructure in the sequence is used as the target substructure for once per training epoch. When the training is done, the weights of the neural network are treated as polymer embedding.
+
+Both the Morgan fingerprint and polymer embedding can be used as polymer representation for fast quantifying structure-property relationships, however, polymer embedding is proved to be a more informative representation. Detailed comparison between those two can be found at [Evaluating Polymer Representations via Quantifying Structure–Property Relationships](https://pubs.acs.org/doi/abs/10.1021/acs.jcim.9b00358).
 
 ### Import Required Packages
 ```markdown
