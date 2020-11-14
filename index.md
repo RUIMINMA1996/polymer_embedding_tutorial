@@ -74,11 +74,11 @@ for train_index, test_index in tqdm(loo.split(X)):
     MAE = abs(prediction[0] - ground_truth[0])
     MAEs.append(MAE)
 ```
-steps:
-           -built inputs (X, y) for machine learing
-           -create some lists for recording outputs
-           -initialize the machine learning model and data-splitting method
-           -train the model via leave-one-out cross-validation
+Steps:
+1. built inputs (X, y) for machine learing
+2. create some lists for recording outputs
+3. initialize the machine learning model and data-splitting method
+4. train the model via leave-one-out cross-validation
 
 ### Summary
 Quantitative strucure-property relationships is the key of material informatics. Hope this simple tutorial will help more and more polymer researchers in finding and designing polymers. If you are interested and want to know more details, please let me know. I will try to get back to you.
