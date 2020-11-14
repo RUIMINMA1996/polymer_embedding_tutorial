@@ -4,9 +4,6 @@ Numerically representing the physical objects is the first and foremost step for
 
 The method for obtaining polymer embedding is similar to the one used for obtaining word embedding. 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
