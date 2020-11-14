@@ -1,5 +1,7 @@
 ## A Tutorial of Quantifying Polymer's Structure-Property Relationships based on Polymer Embedding
 
+### RUIMIN MA
+
 Numerically representing the physical objects is the first and foremost step for machine learing study in them. Materials are among those physical objects and the field that uses machine learning to dig out the relationship between material structures and properties is called material informatics. Today, I am going to write a simple tutorial on how to use polymer embedding for quantifying structure-property relationships in polymers. 
 
 The method for obtaining polymer embedding is similar to the one used for obtaining word embedding. 
