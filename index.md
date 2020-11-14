@@ -32,8 +32,8 @@ polymer_embedding_model = word2vec.Word2Vec.load('../data/POLYINFO_PI1M.pkl')
 
 sentences = list()
 smiles = ['*CCCCCCCCCCCCCOC(=O)CCC(=O)N*', 
-           *CCCCCCCCCOC(=O)CCCCCCCC(*)OC(=O)c1ccccc1,
-           *CC(C)CCC(*)OC1C(=O)OCC1(C)C]
+           '*CCCCCCCCCOC(=O)CCCCCCCC(*)OC(=O)c1ccccc1',
+           '*CC(C)CCC(*)OC1C(=O)OCC1(C)C']
 for i in range(len(smiles)):
     sentence = MolSentence(mol2alt_sentence(Chem.MolFromSmiles(smiles[i], 1))
     sentences.append(sentence)
