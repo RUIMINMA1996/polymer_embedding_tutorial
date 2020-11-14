@@ -2,7 +2,7 @@
 
 ### RUIMIN MA
 
-Numerically representing the physical objects is the first and foremost step for machine learing study in them. Materials are among those physical objects and the field that uses machine learning to dig out the relationship between material structures and properties is called material informatics. Today, I am going to write a simple tutorial on how to use polymer embedding to fast quantify structure-property relationships in polymers. 
+Numerically representing the physical objects is the first and foremost step for machine learing study in them. Materials are among those physical objects and the field that uses machine learning to dig out the relationship between material structures and properties is called material informatics. Here, I am going to write a simple tutorial on how to use polymer embedding to fast quantify structure-property relationships in polymers. 
 
 The method used for obtaining polymer embedding is called [Skip-gram](https://towardsdatascience.com/skip-gram-nlp-context-words-prediction-algorithm-5bbf34f84e0c). Specifically, a polymer is decomposed into a sequence of substructures following the [Morgan algorithm](https://pubs.acs.org/doi/abs/10.1021/ci100050t), and then a target substructure in this sequence of substructures is picked up to predict its context substructures via a single-layer neural network. Theoretically, each substructure in the sequence is used as the target substructure for once per training epoch. When the training is done, the weights of the neural network are treated as polymer embedding.
 
